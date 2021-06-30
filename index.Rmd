@@ -1,0 +1,31 @@
+---
+title: "JCR for Ecology"
+author: "Abhishek Kumar"
+date: "01/07/2021"
+output: 
+  html_document:
+    theme: cerulean
+    highlight: tango
+    code_folding: hide
+---
+
+```{r message=FALSE, warning=FALSE}
+library(DT)
+
+rp <- read.csv("data.csv")
+
+options(DT.options = list(pageLength = 50))
+
+datatable(rp,
+	    caption = "",
+	    filter = "top",
+	    colnames = c("2019" = 3), 
+	    options = list(
+	    	autoWidth = TRUE,
+	    	initComplete = JS(
+	    	"function(settings, json) {",
+	    	"$(this.api().table().header()).css({'background-color': '#317eac', 'color': '#fff'});",
+	    	"}")),
+	    
+	    )
+```
